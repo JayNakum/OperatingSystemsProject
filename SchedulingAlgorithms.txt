@@ -1,0 +1,14 @@
+Done in class:
+    FCFS - First Come First Serve
+    SJF - Shortest Job First
+    Priority Scheduling
+    Round Robin
+
+TODO:
+CPU Scheduling
+   1.1] Preemptive
+        1.1.1] Round Robin
+        1.1.2] SRTN
+   1.2] Non-preemptive
+        1.2.1] FCFS
+        1.2.2] SJF
