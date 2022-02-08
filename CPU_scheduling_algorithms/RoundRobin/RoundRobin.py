@@ -1,24 +1,22 @@
 def getDetails() -> None:
-    process = {}  # each process is treated as dictionary
     numberOfProcesses = int(input('Enter number of processes: '))
     for i in range(0, numberOfProcesses):
         # reading data
         arrivalTime = int(input('Enter arrival time for process[%d] : ' %(i + 1)))
         burstTime = int(input('Enter burst time for process[%d] : ' %(i + 1)))
                 
-        processes.append({'Process ID': i, 'Arrival Time': arrivalTime, 'Burst Time': burstTime}) # putting data in the processes array
+        processes.append({'Process ID': i, 'Arrival Time': arrivalTime, 'Burst Time': burstTime}) # putting data in the processes array each process is treated as a dictionary
         output.append({'Process ID': i, 'Arrival Time': arrivalTime, 'Burst Time': burstTime,'Completion Time':0, 'Turn Around Time': 0, 'Waiting Time': 0})
-
-# sort the processes by its arival time
-def sortByArrivalTime() -> None:
-    def sortBy(process):
-        return process['Arrival Time']
-    processes.sort(key=sortBy)
+        
+        # sorting by its arrival time
+        processes.sort(key=lambda process: process['Arrival Time'])
+        output.sort(key=lambda process: process['Arrival Time'])
 
 # Round Robin
 class RoundRobin:
     def __init__(self, processes) -> None:
         self.processes = processes
+        self.processCount = len(self.processes)
 
     def ganttChart(self) -> list: # This method returns a ganttChart
         isDone = False
@@ -27,10 +25,10 @@ class RoundRobin:
         i = 0 # starting with process[0]
 
         while not isDone:
-            if(i >= len(self.processes)):
+            if(i >= self.processCount):
                 i = 0
 
-            if(self.processes[(len(self.processes)-1)]['Burst Time'] == 0): # if the remaining burst time of last process is zero
+            if(self.processes[(self.processCount-1)]['Burst Time'] == 0): # if the remaining burst time of last process is zero
                 isDone = True # then gantt chart is formed
             
             # remainingBurstTime is the time left to execute
@@ -40,16 +38,16 @@ class RoundRobin:
                 i += 1 # then we skip to the next process
                 continue
             
-            ganttStart = startTime # noting the start time
+            ganttStart = startTime # note the start time before execution begins
 
             # performing the execution of process
-            for execute in range(0, QUANTUM): # executing the process for given Time-QUANTUM
+            for execute in range(0, QUANTUM): # executing the process for given Time (QUANTUM)
                 remainingBurstTime -= 1
                 startTime = startTime + 1
                 if(remainingBurstTime == 0): # if remainingBurstTime is 0
                     break # then the process is fully executed
             
-            ganttStop = startTime # noting the stop time
+            ganttStop = startTime # note the stop time after finishing the execution
             
             # add the 'Process ID', 'Start Time' and 'Stop Time' in ganttChart
             ganttChart.append({'Process ID': self.processes[i]['Process ID'], 'Start Time': ganttStart, 'Stop Time': ganttStop})
@@ -61,29 +59,29 @@ class RoundRobin:
         
     # this method calculates the completionTime of each process
     def calculateCompletionTime(self, ganttChart) -> None:
-        for i in range(0, len(output)):
-            for j in range(0, len(ganttChart)): # it reads the ganttChart
-                if(output[i]['Process ID'] == ganttChart[j]['Process ID']): # and updates the values everytime both the 'Process Id' matches
-                    output[i]['Completion Time'] = ganttChart[j]['Stop Time']
+        for process in output:
+            for gantt in ganttChart: # it reads the ganttChart
+                if(process['Process ID'] == gantt['Process ID']): # and updates the values everytime both the 'Process Id' matches
+                    process['Completion Time'] = gantt['Stop Time']
 
     # this method calculates the turnAroundTime of each process
     def calculateTurnAroundTime(self) -> None:
-        for i in range(0, len(output)):
+        for process in output:
             # for each process, Turn Around Time = Completion Time - Arrival Time
-            output[i]['Turn Around Time'] = output[i]['Completion Time'] - output[i]['Arrival Time']
+            process['Turn Around Time'] = process['Completion Time'] - process['Arrival Time']
     
     # this method calculates the waitingTime of each process
     def calculateWaitingTime(self) -> None:
-        for i in range(0, len(output)):
+        for process in output:
             # for each process, Waiting Time = Turn Around Time - Burst Time
-            output[i]['Waiting Time'] = output[i]['Turn Around Time'] - output[i]['Burst Time']
+            process['Waiting Time'] = process['Turn Around Time'] - process['Burst Time']
     
     # this method calculates the average of all waitingTimes
     def calculateAverageWaitingTime(self) -> float:
         sum = 0
-        for i in range(0, len(output)):
+        for process in output:
             # calculating the sum
-            sum = sum + output[i]['Waiting Time']
+            sum = sum + process['Waiting Time']
         # dividing by total processes
         return (sum / len(output)) # returning the average
 
@@ -93,10 +91,10 @@ def printGanttChart(list) -> None:
     processID = ''
     startTime = ''
     stopTime = ''
-    for i in range(0, len(list)):
-        processID = str(list[i]['Process ID'])
-        startTime = str(list[i]['Start Time'])
-        stopTime = str(list[i]['Stop Time'])
+    for process in list:
+        processID = str(process['Process ID'])
+        startTime = str(process['Start Time'])
+        stopTime = str(process['Stop Time'])
         ganttChartOutput.append((processID, startTime, stopTime))
     print(ganttChartOutput)
 
@@ -110,13 +108,13 @@ def printOutput(list) -> None:
     waitingTime = ''
 
     print('Process ID | Arrival Time | Burst Time | Completion Time | Turn Around Time | Waiting Time')
-    for i in range(0, len(list)):
-        processID = str(list[i]['Process ID'])
-        arrivalTime = str(list[i]['Arrival Time'])
-        burstTime = str(list[i]['Burst Time'])
-        completionTime = str(list[i]['Completion Time'])
-        turnAroundTime = str(list[i]['Turn Around Time'])
-        waitingTime = str(list[i]['Waiting Time'])
+    for process in list:
+        processID = str(process['Process ID'])
+        arrivalTime = str(process['Arrival Time'])
+        burstTime = str(process['Burst Time'])
+        completionTime = str(process['Completion Time'])
+        turnAroundTime = str(process['Turn Around Time'])
+        waitingTime = str(process['Waiting Time'])
         
         print(processID+'\t\t'+arrivalTime+'\t\t'+burstTime+'\t\t'+completionTime+'\t\t'+turnAroundTime+'\t\t'+waitingTime)
 
@@ -126,7 +124,6 @@ if __name__ == "__main__":
     processes = []  # is the process array in which all processes are stored
     output = []
     getDetails() # reading the details from user
-    sortByArrivalTime() # sorting the processes by its arrival time
     
     algorithm = RoundRobin(processes)
 
