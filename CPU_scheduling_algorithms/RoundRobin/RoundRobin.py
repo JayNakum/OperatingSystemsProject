@@ -1,3 +1,4 @@
+# this method gets the Arival Time and Burst Time from user
 def getDetails() -> None:
     numberOfProcesses = int(input('Enter number of processes: '))
     for i in range(0, numberOfProcesses):
@@ -18,7 +19,8 @@ class RoundRobin:
         self.processes = processes
         self.processCount = len(self.processes)
 
-    def ganttChart(self) -> list: # This method returns a ganttChart
+    # This method does the execution of the the process and generates a Gantt Chart
+    def ganttChart(self) -> list: # and returns a ganttChart
         isDone = False
         ganttChart = [] # the main list which will contain the ganttChart 
         startTime = 0 # initial startTime
