@@ -1,0 +1,77 @@
+{
+    "Processes": [
+        {
+            "Process ID": 1,
+            "Arrival Time": 0,
+            "Burst Time": 1,
+            "Response Time": 0,
+            "Completion Time": 1,
+            "Turn Around Time": 1,
+            "Waiting Time": 0
+        },
+        {
+            "Process ID": 0,
+            "Arrival Time": 2,
+            "Burst Time": 2,
+            "Response Time": 0,
+            "Completion Time": 4,
+            "Turn Around Time": 2,
+            "Waiting Time": 0
+        },
+        {
+            "Process ID": 2,
+            "Arrival Time": 2,
+            "Burst Time": 3,
+            "Response Time": 2,
+            "Completion Time": 7,
+            "Turn Around Time": 5,
+            "Waiting Time": 2
+        },
+        {
+            "Process ID": 3,
+            "Arrival Time": 3,
+            "Burst Time": 5,
+            "Response Time": 4,
+            "Completion Time": 12,
+            "Turn Around Time": 9,
+            "Waiting Time": 4
+        },
+        {
+            "Process ID": 4,
+            "Arrival Time": 4,
+            "Burst Time": 4,
+            "Response Time": 8,
+            "Completion Time": 16,
+            "Turn Around Time": 12,
+            "Waiting Time": 8
+        }
+    ],
+    "Gantt Chart": [
+        {
+            "Process ID": 1,
+            "Start Time": 0,
+            "Exit Time": 1
+        },
+        {
+            "Process ID": 0,
+            "Start Time": 2,
+            "Exit Time": 4
+        },
+        {
+            "Process ID": 2,
+            "Start Time": 4,
+            "Exit Time": 7
+        },
+        {
+            "Process ID": 3,
+            "Start Time": 7,
+            "Exit Time": 12
+        },
+        {
+            "Process ID": 4,
+            "Start Time": 12,
+            "Exit Time": 16
+        }
+    ],
+    "Average Waiting Time": 2.8
+}
