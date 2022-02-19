@@ -1,4 +1,4 @@
-package com.example.cpuscheduling
+package com.example.cpuscheduling.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewpager.widget.PagerAdapter
+import com.example.cpuscheduling.ui.home.Model
+import com.example.cpuscheduling.R
 import kotlinx.android.synthetic.main.card_item.view.*
 
 class Adapter(private val context: Context, private val myModelArrayList: ArrayList<Model>) :PagerAdapter(){
