@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CPU Scheduling</string>
+    <string name="Round_Robin">Round Robin</string>
+    <string name="SRTN">SRTN</string>
+    <string name="FCFS">FCFS </string>
+    <string name="SJF">FCFS </string>
+    <string name="menu_title">menu </string>
+    <string name="home">HOME</string>
 </resources>
