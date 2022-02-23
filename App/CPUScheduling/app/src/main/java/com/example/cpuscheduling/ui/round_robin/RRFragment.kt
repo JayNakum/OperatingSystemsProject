@@ -26,7 +26,6 @@ class RRFragment : Fragment() {
         _binding = FragmentRoundRobinBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
         return root
     }
 

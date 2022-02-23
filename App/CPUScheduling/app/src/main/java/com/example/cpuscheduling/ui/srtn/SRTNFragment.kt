@@ -26,7 +26,6 @@ class SRTNFragment : Fragment() {
         _binding = FragmentSrtnBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
         return root
     }
 
