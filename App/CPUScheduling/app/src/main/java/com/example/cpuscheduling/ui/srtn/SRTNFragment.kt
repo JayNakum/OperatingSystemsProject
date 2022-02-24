@@ -21,8 +21,6 @@ class SRTNFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-
         _binding = FragmentSrtnBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
