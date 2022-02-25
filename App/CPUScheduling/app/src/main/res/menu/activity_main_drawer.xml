@@ -18,6 +18,14 @@
             android:id="@+id/nav_srtn"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/SRTN" />
+        <item
+            android:id="@+id/nav_sjf"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="SJF" />
+        <item
+            android:id="@+id/nav_fcfs"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="FCFS" />
 
     </group>
 </menu>

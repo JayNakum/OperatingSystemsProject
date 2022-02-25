@@ -20,5 +20,13 @@
         android:id="@+id/nav_srtn"
         android:name="com.example.cpuscheduling.ui.srtn.SRTNFragment"
         android:label="@string/SRTN" />
+    <fragment
+        android:id="@+id/nav_fcfs"
+        android:name="com.example.cpuscheduling.ui.fcfs.FCFSFragment"
+        android:label="FCFS" />
+    <fragment
+        android:id="@+id/nav_sjf"
+        android:name="com.example.cpuscheduling.ui.sjf.SJFFragment"
+        android:label="SJF" />
 
 </navigation>
