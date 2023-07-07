@@ -9,7 +9,7 @@ An android application to simulate following **CPU scheduling algorithms**:
 ## How to setup?
 - Connect the app with your firebase.  
 - Generate google cloud credentials for python algorithms.  
-- Run jupyter notebooks of algorithms on your PC or Google Colab.  
+- Keep running jupyter notebooks on your PC or Google Colab.  
 - Use the application.  
 
 ## Developed by PDEU CSE Students
